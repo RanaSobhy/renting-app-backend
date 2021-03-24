@@ -32,7 +32,7 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send(`DB url ${url}`);
+  res.send(`DB url ${url} var ${process.env.test}`);
 });
 
 app.use(function (err, req, res, next) {
