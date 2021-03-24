@@ -1,7 +1,22 @@
+require('dotenv').config();
 let express = require("express"),
-  path = require("path"),
   mongoose = require("mongoose"),
   cors = require("cors");
+
+const url = process.env.DB_URI;
+
+const connectionParams={
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true 
+}
+mongoose.connect(url,connectionParams)
+    .then( () => {
+        console.log('Connected to database ')
+    })
+    .catch( (err) => {
+        console.error(`Error connecting to the database. \n${err}`);
+    })
 
 const app = express();
 app.use(cors());
@@ -17,7 +32,7 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello");
+  res.send(`DB url ${url}`);
 });
 
 app.use(function (err, req, res, next) {
