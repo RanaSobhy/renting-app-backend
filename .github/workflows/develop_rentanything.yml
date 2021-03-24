@@ -27,6 +27,12 @@ jobs:
         npm run build --if-present
         npm run test --if-present
 
+    -name: set env varaibles
+      uses: azure/appservice-settings@v1
+      with: 
+        test-var: 'Hello test var'
+
+
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
