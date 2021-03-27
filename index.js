@@ -29,6 +29,7 @@ app.use(bodyParser.json());
 require("./Routes/auth.routes")(app);
 require("./Routes/user.routes")(app);
 require("./Routes/product.routes")(app);
+require("./Routes/category.routes")(app);
 
 // PORT
 const port = process.env.PORT || 8000;
@@ -38,7 +39,7 @@ app.listen(port, () => {
 });
 
 app.get("/", (req, res) => {
-  res.send(`DB url ${url} var ${process.env.test}`);
+  res.send({message: "Welcome to Renting App"});
 });
 
 app.use(function (err, req, res, next) {
