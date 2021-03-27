@@ -1,7 +1,8 @@
 require('dotenv').config();
 let express = require("express"),
   mongoose = require("mongoose"),
-  cors = require("cors");
+  cors = require("cors"),
+  bodyParser = require("body-parser");
 
 const url = process.env.DB_URI;
 
@@ -21,8 +22,12 @@ mongoose.connect(url,connectionParams)
 const app = express();
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // API root
-// app.use("/api", bookRoute);
+require("./Routes/auth.routes")(app);
+require("./Routes/user.routes")(app);
 
 // PORT
 const port = process.env.PORT || 8000;
