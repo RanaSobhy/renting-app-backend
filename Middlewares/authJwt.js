@@ -5,7 +5,7 @@ exports.verifyToken = (req, res, next) => {
   async function verify() {
     let token = req.headers["x-access-token"];
     if (!token) {
-      return res.status(403).send({ message: "No token provided!" });
+      res.status(401).send({ message: "Unauthorized!" });
     }
 
     const ticket = await client.verifyIdToken({
@@ -21,7 +21,6 @@ exports.verifyToken = (req, res, next) => {
     next();
   }
   verify().catch((err) => {
-    console.error(err);
     res.status(401).send({ message: "Unauthorized!" });
   });
 };

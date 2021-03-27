@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 // API root
 require("./Routes/auth.routes")(app);
 require("./Routes/user.routes")(app);
+require("./Routes/product.routes")(app);
 
 // PORT
 const port = process.env.PORT || 8000;

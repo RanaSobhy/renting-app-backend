@@ -10,7 +10,6 @@ exports.create = (req, res) => {
     email: req.body.email,
   });
 
-  console.log(user);
   // Save User in the database
   user
     .save(user)
@@ -18,7 +17,6 @@ exports.create = (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).send({
         message: err.message || "Some error occurred while creating the user.",
       });
@@ -43,7 +41,7 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials.",
+          err.message || "Some error occurred while retrieving users.",
       });
     });
 };
