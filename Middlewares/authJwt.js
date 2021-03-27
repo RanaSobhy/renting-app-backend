@@ -13,11 +13,7 @@ exports.verifyToken = (req, res, next) => {
       audience: process.env.GOOGLE_CLIENT_ID,
     });
     const payload = ticket.getPayload();
-    const userDetails = {
-      email: payload["email"],
-      firstname: payload["given_name"],
-      lastname: payload["family_name"],
-    };
+    req.userEmail = payload["email"];
     next();
   }
   verify().catch((err) => {
