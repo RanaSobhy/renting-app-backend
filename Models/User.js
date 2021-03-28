@@ -23,9 +23,6 @@ let User = new Schema(
     mobile: {
       type: String,
     },
-    email: {
-      type: String,
-    },
     picture: {
       type: String,
     },

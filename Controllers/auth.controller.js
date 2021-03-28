@@ -7,7 +7,6 @@ exports.create = (req, res) => {
     }
 
     if (!user) {
-      console.log(req.body);
       var newUser = new User(req.body);
       newUser.save((err, save) => {
         if (err) next(err);

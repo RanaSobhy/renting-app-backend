@@ -12,6 +12,7 @@ exports.create = (req, res) => {
     condition: req.body.condition,
     brand: req.body.brand,
     categoryId: req.body.categoryId,
+    photo: req.body.photo
   });
 
   // Save product in the database
@@ -101,7 +102,6 @@ exports.rent = (req, res) => {
       if (!product) {
         res.status(404).send({ message: "Not Found!" });
       } else {
-          console.log(product)
         const rental = new Rental({
           ownerId: product._id,
           rentedBy: req.body.rentedBy,

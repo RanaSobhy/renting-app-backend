@@ -14,6 +14,7 @@ let Product = new Schema(
     condition: { type: String, enum: ["New", "Used"] },
     brand: { type: String },
     categoryId: { type: String },
+    photo: { type: String },
   },
   {
     collection: "products",
